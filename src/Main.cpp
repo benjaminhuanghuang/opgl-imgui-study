@@ -41,7 +41,6 @@ int main(void)
     /* Make the window's context current */
     opengl.OpenGLmakeContextCurrent(window);
 
-    
 
     
     //Enable function of OpenGL
@@ -52,7 +51,7 @@ int main(void)
     myImGuiInit(window);
     
 
-    //Create Tests
+    // //Create Tests
     test::Test* currentTest = nullptr;
     test::TestMenu* testMenu = new test::TestMenu(currentTest);
     currentTest = testMenu;
@@ -78,8 +77,8 @@ int main(void)
         lastFrame = currentFrame;
         /* Render here */
         GLCall(glClearColor(0.0f,0.0f,0.0f,1.0f));
+        
         Renderer::Get().Clear();
-
         myImGuiNewFrame();
 
         if (currentTest)
@@ -112,10 +111,8 @@ int main(void)
         delete testMenu;
     }
 
-
     myImGuiDestroy();
 
-    
     return 0;
 }
 

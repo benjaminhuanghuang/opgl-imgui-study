@@ -8,7 +8,7 @@ INCLUDES = -I/usr/local/include -I$(VENDOR_DIR) -I${SRC_DIR} -I${TEST_DIR}
 LIBS = -L/usr/local/lib -lglfw  -lGLEW -lassimp -framework OpenGL
 
 
-CXXFLAGS = -std=c++17
+CXXFLAGS = -std=c++17 -DIMGUI_IMPL_OPENGL_LOADER_GLAD -g
 #CXXFLAGS += -DIMGUI_IMPL_OPENGL_LOADER_GL3W
 
 SOURCES = $(wildcard src/*.cpp)
@@ -23,7 +23,7 @@ SOURCES += $(wildcard vendor/stb_image/*.cpp)
 OBJS = $(addsuffix .o, $(basename $(notdir $(SOURCES))))
 
 %.o:src/%.c
-	$(CC) $(CFLAGS) -c -o $@ $<
+	$(CC) $(CXXFLAGS) -c -o $@ $<
 
 %.o:src/%.cpp
 	$(CXX) $(CXXFLAGS) $(INCLUDES) -c -o $@ $<

@@ -27,6 +27,10 @@ public:
 		{
 			std::cout << "Failed to initialize GLAD" << std::endl;
 		}
+		if (!gladLoadGL() )
+		{
+			std::cout << "Failed to initialize GLAD" << std::endl;
+		}
 	}
 
 	inline float GetWindowResolutionX() const { return m_WindowResolutionX; }
