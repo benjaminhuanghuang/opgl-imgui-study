@@ -28,24 +28,7 @@ int main(void)
 
     opengl.OpenGLInit();
 
-    /* Create a windowed mode window and its OpenGL context */
-    GLFWwindow* window;
-    window = opengl.OpenGLCreateWindow();
-    if (!window)
-    {
-        std::cout << "Failed to Create Window" << std::endl;
-        glfwTerminate();
-        return -1;
-    }
-    
-    /* Make the window's context current */
-    opengl.OpenGLmakeContextCurrent(window);
-
-
-    
-    //Enable function of OpenGL
-    
-    opengl.OpenGLEnableFunctions();
+    GLFWwindow* window = opengl.OpenGLCreateWindow();
 
     //Init ImGUI
     myImGuiInit(window);
@@ -95,14 +78,10 @@ int main(void)
             ImGui::End();
         }
 
-        
-
-
         ImGui::Render();
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
-        opengl.OpenGLAfterProcess(window);
-        
+        opengl.OpenGLAfterProcess(window);        
     }
 
     delete currentTest;

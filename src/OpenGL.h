@@ -5,12 +5,12 @@
 class OpenGL
 {
 public:
-	OpenGL(const float& WindowResolutionX,const float& WindowResolutionY,const std::string& WindowName);
+	OpenGL(const float& w,const float& h,const std::string& title);
 	~OpenGL();
 
 	void OpenGLInit() const;
 	GLFWwindow* OpenGLCreateWindow() const;
-	void OpenGLEnableFunctions() const;
+	
 	static inline void OpenGLAfterProcess(GLFWwindow*& window)
 	{
 		/* Swap front and back buffers */
@@ -19,24 +19,11 @@ public:
 		/* Poll for and process events */
 		glfwPollEvents();
 	}
-	static inline void OpenGLmakeContextCurrent(GLFWwindow*& window) 
-	{
-		glfwMakeContextCurrent(window);
-		// glad: load all OpenGL function pointers
-		if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-		{
-			std::cout << "Failed to initialize GLAD" << std::endl;
-		}
-		if (!gladLoadGL() )
-		{
-			std::cout << "Failed to initialize GLAD" << std::endl;
-		}
-	}
 
-	inline float GetWindowResolutionX() const { return m_WindowResolutionX; }
-	inline float GetWindowResolutionY() const { return m_WindowResolutionY; }
+	inline float GetWindowResolutionX() const { return m_width; }
+	inline float GetWindowResolutionY() const { return m_height; }
 private:
-	float m_WindowResolutionX, m_WindowResolutionY;
-	std::string m_WindowName;
+	float m_width, m_height;
+	std::string m_title;
 };
 
